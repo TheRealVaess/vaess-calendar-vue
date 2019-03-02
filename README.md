@@ -1,6 +1,6 @@
-# vaess-calendar-vue
+# test
 
-> TP noté VueJS
+> A Vue.js project
 
 ## Build Setup
 
