@@ -1,14 +1,47 @@
 <template>
 <div>
   <h1>Modifier l'évèvement</h1>
+
+    <div>{{ message }}</div>
+
+    <label for="nameEvent">Nom de l'évèvement</label>
+    <input type="text" id="nameEvent" v-model="nameEvent"/>
+    <label for="descEvent">Description de l'évèvement</label>
+    <input type="text" id="descEvent" v-model="descEvent"/>
+    <label for="dateEvent">Date de l'évèvement</label>
+    <input type="date" id="dateEvent" v-model="dateEvent"/>
+
+    <button type="button" @click="submitModifyEvent">Ajouter</button>
 </div>
 
 </template>
 
 <script>
+import axios from 'axios'
 export default{
   name: 'eventModify',
-  components: {
+  data () {
+    return {
+      message: '',
+      nameEvent: '',
+      descEvent: '',
+      dateEvent: ''
+    }
+  },
+  methods: {
+    submitModifyEvent () {
+      const param = new URLSearchParams()
+      param.set('newName', this.nameEvent)
+      param.set('newDesc', this.descEvent)
+      param.set('newDate', this.dateEvent)
+      axios.post('http://localhost:5000/events/modify/' + this.$route.params.eventId, param, {withCredential: true})
+        .then((response) => {
+          this.message = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+    }
   }
 }
 </script>

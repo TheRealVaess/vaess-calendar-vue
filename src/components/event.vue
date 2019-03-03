@@ -3,6 +3,7 @@
     <div> {{ eventName }} </div>
     <div> {{ eventDesc }} </div>
     <div> {{ eventDate }} </div>
+    <div> <button @click="modifyEvent">Modifier</button> </div>
     <div> <button @click="deleteEvent">Supprimer</button> </div>
   </div>
 </template>
@@ -19,6 +20,14 @@ export default {
     'eventDate'
   ],
   methods: {
+    modifyEvent () {
+      this.$router.push({
+        name: 'eventModify',
+        params: {
+          eventId: this.eventId
+        }
+      })
+    },
     deleteEvent () {
       axios.post('http://localhost:5000/events/delete/' + this.eventId, {}, {withCredential: true})
         .then((response) => {

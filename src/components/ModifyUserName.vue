@@ -22,7 +22,6 @@ export default{
   },
   methods: {
     submitModifyUserName () {
-      // console.log(this.username)
       const param = new URLSearchParams()
       param.set('newUserName', this.username)
       axios.post('http://localhost:5000/modifyUserName', param, {withCredential: true})

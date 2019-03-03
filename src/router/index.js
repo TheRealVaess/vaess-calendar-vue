@@ -9,7 +9,6 @@ import modifyPassWord from '@/components/ModifyPassWord'
 import events from '@/components/Events'
 import eventDetails from '@/components/EventDetails'
 import eventAdd from '@/components/EventAdd'
-import eventDelete from '@/components/EventDelete'
 import eventModify from '@/components/EventModify'
 
 Vue.use(Router)
@@ -52,7 +51,7 @@ export default new Router({
       component: events
     },
     {
-      path: '/events/eventDetails/:eventId',
+      path: '/events/:eventId',
       name: 'eventDetails',
       component: eventDetails,
       props: true
@@ -63,14 +62,10 @@ export default new Router({
       component: eventAdd
     },
     {
-      path: '/events/eventDelete',
-      name: 'eventDelete',
-      component: eventDelete
-    },
-    {
-      path: '/events/eventModify',
+      path: '/events/eventModify/:eventId',
       name: 'eventModify',
-      component: eventModify
+      component: eventModify,
+      props: true
     }
   ]
 })
