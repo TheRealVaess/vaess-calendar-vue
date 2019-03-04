@@ -29,7 +29,7 @@ export default {
       })
     },
     deleteEvent () {
-      axios.post('http://localhost:5000/events/delete/' + this.eventId, {}, {withCredential: true})
+      axios.post('https://vaess-calendar-node.herokuapp.com/events/delete/' + this.eventId, {}, {withCredential: true})
         .then((response) => {
           this.message = response.data
           alert('Evènement bien supprimé')

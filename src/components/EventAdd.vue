@@ -35,7 +35,7 @@ export default{
       params.set('newName', this.nameEvent)
       params.set('newDesc', this.descEvent)
       params.set('newDate', this.dateEvent)
-      axios.post('http://localhost:5000/events/add', params, {withCredential: true})
+      axios.post('https://vaess-calendar-node.herokuapp.com/events/add', params, {withCredential: true})
         .then((response) => {
           this.message = response.data
         })

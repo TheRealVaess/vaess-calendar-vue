@@ -24,7 +24,7 @@ export default{
     submitModifyUserName () {
       const param = new URLSearchParams()
       param.set('newUserName', this.username)
-      axios.post('http://localhost:5000/modifyUserName', param, {withCredential: true})
+      axios.post('https://vaess-calendar-node.herokuapp.com/modifyUserName', param, {withCredential: true})
         .then((response) => {
           this.message = response.data
         })

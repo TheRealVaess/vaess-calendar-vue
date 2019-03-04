@@ -20,10 +20,12 @@ export default{
     submitDeleteAccount () {
       axios({
         method: 'get',
-        url: 'http://localhost:5000/deleteAccount'
+        url: 'https://vaess-calendar-node.herokuapp.com/deleteAccount'
       })
         .then((response) => {
           this.message = response.data
+          localStorage.removeItem('token')
+          this.tokenExists = false
         })
         .catch(function (error) {
           console.log(error)

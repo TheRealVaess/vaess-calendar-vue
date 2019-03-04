@@ -56,7 +56,7 @@ const router = new Router({
       props: true
     },
     {
-      path: '/events/eventAdd',
+      path: '/eventAdd',
       name: 'eventAdd',
       component: eventAdd
     },

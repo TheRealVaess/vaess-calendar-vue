@@ -41,7 +41,7 @@ export default{
       param.set('newName', this.nameEvent)
       param.set('newDesc', this.descEvent)
       param.set('newDate', this.dateEvent)
-      axios.post('http://localhost:5000/events/modify/' + this.$route.params.eventId, param, {withCredential: true})
+      axios.post('https://vaess-calendar-node.herokuapp.com/events/modify/' + this.$route.params.eventId, param, {withCredential: true})
         .then((response) => {
           this.message = response.data
         })
@@ -52,7 +52,7 @@ export default{
   },
   beforeMount () {
     const param = new URLSearchParams()
-    axios.get('http://localhost:5000/events/' + this.$route.params.eventId, param, {withCredentials: true})
+    axios.get('https://vaess-calendar-node.herokuapp.com/events/' + this.$route.params.eventId, param, {withCredentials: true})
       .then((response) => {
         if (response.data) {
           this.nameEvent = response.data.eventName

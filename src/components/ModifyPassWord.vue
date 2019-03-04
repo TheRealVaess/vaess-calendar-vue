@@ -28,7 +28,7 @@ export default{
       const params = new URLSearchParams()
       params.set('newPassword', this.newPassword)
       params.set('oldPassword', this.oldPassword)
-      axios.post('http://localhost:5000/modifyPassWord', params, {withCredential: true})
+      axios.post('https://vaess-calendar-node.herokuapp.com/modifyPassWord', params, {withCredential: true})
         .then((response) => {
           this.message = response.data
         })

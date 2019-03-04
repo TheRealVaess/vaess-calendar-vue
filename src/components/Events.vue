@@ -36,7 +36,7 @@ export default{
   created () {
     axios({
       method: 'get',
-      url: 'http://localhost:5000/events'
+      url: 'https://vaess-calendar-node.herokuapp.com/events'
     })
       .then((response) => {
         this.events = response.data
@@ -48,7 +48,7 @@ export default{
   methods: {
     deleteEvent (idTab, idEvent) {
       this.events.splice(idTab, 1)
-      axios.post('http://localhost:5000/events/delete/' + idEvent, {}, {withCredential: true})
+      axios.post('https://vaess-calendar-node.herokuapp.com/events/delete/' + idEvent, {}, {withCredential: true})
         .then((response) => {
           this.message = response.data
         })

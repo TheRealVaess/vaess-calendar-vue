@@ -24,7 +24,7 @@ export default{
     }
   },
   created () {
-    axios.get('http://localhost:5000/events/' + this.$route.params.eventId, {}, {withCredential: true})
+    axios.get('https://vaess-calendar-node.herokuapp.com/events/' + this.$route.params.eventId, {}, {withCredential: true})
       .then((response) => {
         if (response.data) {
           this.event = response.data
