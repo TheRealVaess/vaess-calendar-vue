@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import event from '@/components/eventResume'
+import event from './eventResume'
 import axios from 'axios'
 
 export default{

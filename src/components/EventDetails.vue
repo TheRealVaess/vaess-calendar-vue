@@ -10,7 +10,7 @@
 
 <script>
 import axios from 'axios'
-import event from '@/components/event'
+import event from './event'
 
 export default{
   name: 'eventDetails',
