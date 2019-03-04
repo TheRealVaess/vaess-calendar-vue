@@ -10,10 +10,9 @@ import events from '@/components/Events'
 import eventDetails from '@/components/EventDetails'
 import eventAdd from '@/components/EventAdd'
 import eventModify from '@/components/EventModify'
+import axios from 'axios'
 
-Vue.use(Router)
-
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -62,10 +61,29 @@ export default new Router({
       component: eventAdd
     },
     {
-      path: '/events/eventModify/:eventId',
+      path: '/events/modify/:eventId',
       name: 'eventModify',
       component: eventModify,
       props: true
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/', '/sign-in', '/login']
+  const authRequired = !publicPages.includes(to.path)
+
+  if (authRequired && !localStorage.getItem('token')) {
+    return next('/login')
+  }
+  axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token')
+  next()
+})
+
+export default router
+
+Vue.use(Router)

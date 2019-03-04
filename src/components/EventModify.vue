@@ -18,6 +18,7 @@
 
 <script>
 import axios from 'axios'
+
 export default{
   name: 'eventModify',
   data () {
@@ -42,6 +43,18 @@ export default{
           console.log(error)
         })
     }
+  },
+  beforeMount () {
+    const param = new URLSearchParams()
+    axios.get('http://localhost:5000/events/' + this.$route.params.eventId, param, {withCredentials: true})
+      .then((response) => {
+        this.nameEvent = response.data.eventName
+        this.descEvent = response.data.eventDesc
+        this.dateEvent = response.data.eventDate
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 }
 </script>

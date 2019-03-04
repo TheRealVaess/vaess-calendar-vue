@@ -2,7 +2,11 @@
   <div>
     <h1>S'inscrire</h1>
 
-    <div>{{ message }}</div>
+    <div v-if="message">
+      <p>
+        {{ message }}
+      </p>
+    </div>
 
     <label for="username">Pseudo</label>
     <input type="text" id="username" v-model="username"/>
@@ -17,7 +21,7 @@
 import axios from 'axios'
 
 export default{
-  name: 'login',
+  name: 'signup',
   data () {
     return {
       username: '',
