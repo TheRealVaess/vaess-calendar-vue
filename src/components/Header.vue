@@ -1,11 +1,11 @@
 <template>
 <header>
+  <router-link to="/">Accueil</router-link>
   <h1>Vaess and Mornyan event lister</h1>
   <router-link v-if="this.tokenExists" to="/">
-    <span @click="disconnect()">
-      Déconnexion
-    </span>
+    <span @click="disconnect()">Déconnexion</span>
   </router-link>
+  <hr>
 </header>
 </template>
 
@@ -23,6 +23,9 @@ export default {
     disconnect () {
       localStorage.removeItem('token')
       this.tokenExists = false
+    },
+    getUsername () {
+
     }
   },
   beforeMount () {

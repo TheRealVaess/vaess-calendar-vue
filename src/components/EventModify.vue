@@ -2,7 +2,12 @@
 <div>
   <h1>Modifier l'évèvement</h1>
 
-    <div>{{ message }}</div>
+  <div v-if="message === 'Pas d\'évènement disponible'">
+    <p>{{ message }}</p>
+  </div>
+
+  <div v-else>
+    <p>{{ message }}</p>
 
     <label for="nameEvent">Nom de l'évèvement</label>
     <input type="text" id="nameEvent" v-model="nameEvent"/>
@@ -12,6 +17,7 @@
     <input type="date" id="dateEvent" v-model="dateEvent"/>
 
     <button type="button" @click="submitModifyEvent">Ajouter</button>
+  </div>
 </div>
 
 </template>
@@ -48,9 +54,13 @@ export default{
     const param = new URLSearchParams()
     axios.get('http://localhost:5000/events/' + this.$route.params.eventId, param, {withCredentials: true})
       .then((response) => {
-        this.nameEvent = response.data.eventName
-        this.descEvent = response.data.eventDesc
-        this.dateEvent = response.data.eventDate
+        if (response.data) {
+          this.nameEvent = response.data.eventName
+          this.descEvent = response.data.eventDesc
+          this.dateEvent = response.data.eventDate
+        } else {
+          this.message = "Pas d'évènement disponible"
+        }
       })
       .catch(function (error) {
         console.log(error)

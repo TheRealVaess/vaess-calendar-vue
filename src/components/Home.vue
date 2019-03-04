@@ -8,7 +8,10 @@
     <signUp class="modal" v-if="showSignUp" @close="showSignUp = false"></signUp>
   </div>
   <div v-else>
-    SUPER
+    <router-link to="/events">Vos évènements</router-link>
+    <router-link to="/modifyUserName">Modifier nom</router-link>
+    <router-link to="/modifyPassWord">Modifier mot de passe</router-link>
+    <router-link to="/deleteAccount">Supprimer compte</router-link>
   </div>
 </div>
 
@@ -17,6 +20,8 @@
 <script>
 import login from '@/components/Login'
 import signUp from '@/components/SignUp'
+import { EventBus } from './event-bus'
+
 export default{
   name: 'home',
   components: {
@@ -32,6 +37,11 @@ export default{
   },
   beforeMount () {
     this.token = localStorage.getItem('token')
+  },
+  mounted () {
+    EventBus.$on('token-change', () => {
+      this.token = true
+    })
   }
 }
 </script>

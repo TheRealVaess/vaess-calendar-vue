@@ -1,7 +1,10 @@
 <template>
   <div>
     <h1>Details event</h1>
-    <event :eventId="event.eventId" :eventName="event.eventName" :eventDesc="event.eventDesc" :eventDate="event.eventDate" ></event>
+    <div v-if="message === 'Pas d\'évènement disponible'">
+      <p>{{ message }}</p>
+    </div>
+    <event v-else :eventId="event.eventId" :eventName="event.eventName" :eventDesc="event.eventDesc" :eventDate="event.eventDate" ></event>
   </div>
 </template>
 
@@ -16,14 +19,18 @@ export default{
   },
   data () {
     return {
+      message: '',
       event: []
     }
   },
   created () {
     axios.get('http://localhost:5000/events/' + this.$route.params.eventId, {}, {withCredential: true})
       .then((response) => {
-        console.log(response.data)
-        this.event = response.data
+        if (response.data) {
+          this.event = response.data
+        } else {
+          this.message = "Pas d'évènement disponible"
+        }
       })
       .catch(function (error) {
         console.log(error)
