@@ -10,6 +10,7 @@
     <input type="password" id="password" v-model="password"/>
 
     <button type="button" @click="submitLogin">Se connecter</button>
+    <button @click="$emit('close')">Fermer</button>
   </div>
 </template>
 

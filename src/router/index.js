@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import home from '@/components/Home'
-import signIn from '@/components/SignIn'
+import signUp from '@/components/SignUp'
 import login from '@/components/Login'
 import deleteAccount from '@/components/DeleteAccount'
 import modifyUserName from '@/components/ModifyUserName'
@@ -20,9 +20,9 @@ const router = new Router({
       component: home
     },
     {
-      path: '/sign-in',
-      name: 'signIn',
-      component: signIn
+      path: '/sign-up',
+      name: 'signUp',
+      component: signUp
     },
     {
       path: '/login',
@@ -74,7 +74,7 @@ const router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/', '/sign-in', '/login']
+  const publicPages = ['/', '/sign-up', '/login']
   const authRequired = !publicPages.includes(to.path)
 
   if (authRequired && !localStorage.getItem('token')) {

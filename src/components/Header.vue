@@ -1,7 +1,6 @@
 <template>
 <header>
   <h1>Vaess and Mornyan event lister</h1>
-  {{ tokenExists }}
   <router-link v-if="this.tokenExists" to="/">
     <span @click="disconnect()">
       Déconnexion
