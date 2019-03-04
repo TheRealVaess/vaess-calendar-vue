@@ -9,7 +9,7 @@
   </div>
   <div v-else>
     <router-link to="/events">Vos évènements</router-link>
-    <router-link to="/eventAdd">Vos évènements</router-link>
+    <router-link to="/eventAdd">Ajouter évènement</router-link>
     <router-link to="/modifyUserName">Modifier nom</router-link>
     <router-link to="/modifyPassWord">Modifier mot de passe</router-link>
     <router-link to="/deleteAccount">Supprimer compte</router-link>
